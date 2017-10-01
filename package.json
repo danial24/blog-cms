@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-runtime": "^6.6.1",    
+    "babel-runtime": "^6.6.1",
+    "phrontend": "0.1.0-beta",
     "react": "^15.5.4",
     "react-dom": "^15.4.0",
     "react-router": "^2.0.0",

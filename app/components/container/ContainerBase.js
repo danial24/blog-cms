@@ -11,4 +11,13 @@ export default class ContainerBase extends React.Component{
   // navigateBackListener(){
   //     browserHistory.goBack();
   // }
+  componentWillMount(){
+
+  }
+  componentDidMount(){
+
+  }
+  componentWillUnmount(){
+
+  }
 }
