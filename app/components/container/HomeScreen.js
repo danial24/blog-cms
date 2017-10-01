@@ -1,7 +1,8 @@
 import ContainerBase from './ContainerBase';
 import React from 'react';
+import { Link } from 'react-router';
 
-export default class HomeScreen extends ContainerBase{
+export default class HomeScreen extends ContainerBase {
 
     // componentWillMount(){
     //     this.navigateToListing = this.navigateToListing.bind(this);
@@ -11,9 +12,11 @@ export default class HomeScreen extends ContainerBase{
     //         pathname:"/listing"
     //     });
     // }
-    render(){
+    render() {
         return (<div>
-            Home Screen
-            </div>);
+            <Link to={"/listing"}>
+                Home Screen
+            </Link>
+        </div>);
     }
 }
