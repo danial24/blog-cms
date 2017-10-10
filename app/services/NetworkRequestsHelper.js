@@ -1,4 +1,4 @@
-import DebugHelper from './DebugHelper';
+import DebugHelper from '../utils/DebugHelper';
 
 var environmentProduction = false;
 
@@ -35,6 +35,7 @@ class NetworkRequestsHelper{
     return xhr;
   }
   sendXhrRequest(xhr, data){
+    xhr.setRequestHeader("Authorization", "Basic " + btoa("admin@local.com:admin123"));
     xhr.send(data);
   }
   getCurrentXHR(){

@@ -8,6 +8,7 @@ class HomeScreenStore extends Store {
 
         switch (payload.actionType) {
             case FETCH_BLOGS_DATA:
+                console.log(payload.data);
                 //setBlogsData
                 break;
             default:

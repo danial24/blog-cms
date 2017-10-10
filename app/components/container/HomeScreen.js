@@ -3,12 +3,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import HomeScreenStore from '../../stores/HomeScreenStore';
 import * as ActionTypes from '../../actions/ActionTypes';
-
+import HomeScreenInteractor from '../../interactors/HomeScreenInteractor';
 export default class HomeScreen extends ContainerBase {
 
     componentWillMount() {
         super.componentWillMount();
         this.handleResponse = this.handleResponse.bind(this);
+        HomeScreenInteractor.getBlogsData();
+
     }
     componentDidMount() {
         super.componentDidMount();
