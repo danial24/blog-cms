@@ -12,6 +12,45 @@ class NetworkRequestsHelper{
     this.performGetRequest = this.performGetRequest.bind(this);
     this.getCurrentXHR  = this.getCurrentXHR.bind(this);
   }
+
+  makeCorsGetRequest(url, handleResponse) {
+    // This is a sample server that supports CORS.
+    var _this = this;
+    var xhr = this.createCORSRequest('GET', url);
+    if (!xhr) {
+      alert('CORS not supported');
+      return;
+    }
+    
+  
+    xhr.onload = function (e) {
+      _this.onSuccessActions(xhr,handleResponse);
+    }
+    xhr.onerror = function (e) {
+      _this.onFailureActions(xhr,handleResponse);
+    };
+    xhr.setRequestHeader("Authorization", "Basic " + btoa("admin@local.com:admin123"));
+    
+    xhr.send();
+  }
+
+  createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+      console.log("cors supported");
+      // XHR for Chrome/Firefox/Opera/Safari.
+      xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+      // XDomainRequest for IE.
+      xhr = new XDomainRequest();
+      xhr.open(method, url);
+    } else {
+      // CORS not supported.
+      xhr = null;
+    }
+    return xhr;
+  }  
+
   get(url, handleResponse){
     this.performGetRequest(url, handleResponse);
   }
