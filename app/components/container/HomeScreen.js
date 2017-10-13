@@ -5,6 +5,9 @@ import HomeScreenStore from '../../stores/HomeScreenStore';
 import * as ActionTypes from '../../actions/ActionTypes';
 import HomeScreenInteractor from '../../interactors/HomeScreenInteractor';
 import CircularProgress from 'material-ui/CircularProgress';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class HomeScreen extends ContainerBase {
 
@@ -48,7 +51,7 @@ export default class HomeScreen extends ContainerBase {
 
 
 
-    getListingItem(item, index){
+    getListingItem(item, index) {
         // return (
         //     <li key={index}>
         //         <p>{item.title}</p>
@@ -58,39 +61,55 @@ export default class HomeScreen extends ContainerBase {
         //     </li>
         // );
 
-        return(
+        return (
             <li className="small-card" key={index + 100} >
-              {/* {this.getImageComponent(item)} */}
-              <div className="card-content card-content-liner-3">
-                <ul className="unstyled list-data">
-                  <li className="lable-item">
-                      {item.title}
-                  </li>
-                  <li className="car-review">
-                  <p className="">{item.content}</p>
-                  </li>
-                  <li className="grey">{"Posted By: " + item.author}</li>
-                  <li className="grey">{item.created_at}</li>
-                </ul>
-              </div>
+                {/* {this.getImageComponent(item)} */}
+                <div className="card-content card-content-liner-3">
+                    <ul className="unstyled list-data">
+                        <li className="lable-item">
+                            {item.title}
+                        </li>
+                        <li className="car-review">
+                            <p className="">{item.content}</p>
+                        </li>
+                        <li className="grey">{"Posted By: " + item.author}</li>
+                        <li className="grey">{item.created_at}</li>
+                    </ul>
+                </div>
             </li>
-          );
+        );
     }
-    getHorizontalListView(){
+    getHorizontalListView() {
         var list = this.state.blogsList;
         var layoutWidth = ((210 * this.state.blogsList.length) + 10) + 'px';
         return (
-          <div className="scrollabe-content-panel popular-up-comming">
-            <div className="scrollable-panel clearfix" style={{width:layoutWidth}}>
-              <ul className="unstyled inline-block">
-                {list.map(function(item,index){
-                  return this.getListingItem(item,index);
-                }.bind(this))}
-              </ul>
+            <div className="scrollabe-content-panel popular-up-comming">
+                <div className="scrollable-panel clearfix" style={{ width: layoutWidth }}>
+                    <ul className="unstyled inline-block">
+                        {list.map(function (item, index) {
+                            return this.getListingItem(item, index);
+                        }.bind(this))}
+                    </ul>
+                </div>
             </div>
-          </div>
         );
-      }
+    }
+
+    getDrawerItem() {
+        return (
+            <div>
+
+                <Drawer open={true}>
+                    <MenuItem>Sports</MenuItem>
+                    <MenuItem>Music</MenuItem>
+                    <MenuItem>Gaming</MenuItem>
+                    <MenuItem>Videos</MenuItem>
+                    <MenuItem>TV News</MenuItem>
+                    <MenuItem>News</MenuItem>
+                </Drawer>
+            </div>
+        );
+    }
 
     render() {
         return (<div>
