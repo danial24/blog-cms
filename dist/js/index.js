@@ -2467,7 +2467,7 @@ var childRoutesArray = [{
     __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, "./app/components/container/HomeScreen.js")).then(loadRoute(cb)).catch(errorLoading);
   }
 }, {
-  path: 'reacts/1/listing',
+  path: 'reacts/1/detail',
   getComponent: function getComponent(location, cb) {
     __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, "./app/components/container/Listing.js")).then(loadRoute(cb)).catch(errorLoading);
   }

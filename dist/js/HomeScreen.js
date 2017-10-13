@@ -227,34 +227,56 @@ var HomeScreen = function (_ContainerBase) {
     }, {
         key: 'getListingItem',
         value: function getListingItem(item, index) {
+            // return (
+            //     <li key={index}>
+            //         <p>{item.title}</p>
+            //         <p>{item.content}</p>
+            //         <p>{item.author}</p>
+            //         <p>{item.created_at}</p>
+            //     </li>
+            // );
+
             return _react2.default.createElement(
                 'li',
-                { key: index },
+                { className: 'small-card', key: index + 100 },
                 _react2.default.createElement(
-                    'p',
-                    null,
-                    item.title
-                ),
-                _react2.default.createElement(
-                    'p',
-                    null,
-                    item.content
-                ),
-                _react2.default.createElement(
-                    'p',
-                    null,
-                    item.author
-                ),
-                _react2.default.createElement(
-                    'p',
-                    null,
-                    item.created_at
+                    'div',
+                    { className: 'card-content card-content-liner-3' },
+                    _react2.default.createElement(
+                        'ul',
+                        { className: 'unstyled list-data' },
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'lable-item' },
+                            item.title
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'car-review' },
+                            _react2.default.createElement(
+                                'p',
+                                { className: '' },
+                                item.content
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'grey' },
+                            "Posted By: " + item.author
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            { className: 'grey' },
+                            item.created_at
+                        )
+                    )
                 )
             );
         }
     }, {
         key: 'getHorizontalListView',
         value: function getHorizontalListView() {
+            var list = this.state.blogsList;
             var layoutWidth = 210 * this.state.blogsList.length + 10 + 'px';
             return _react2.default.createElement(
                 'div',
@@ -265,7 +287,7 @@ var HomeScreen = function (_ContainerBase) {
                     _react2.default.createElement(
                         'ul',
                         { className: 'unstyled inline-block' },
-                        this.state.blogsList.map(function (item, index) {
+                        list.map(function (item, index) {
                             return this.getListingItem(item, index);
                         }.bind(this))
                     )
@@ -279,9 +301,9 @@ var HomeScreen = function (_ContainerBase) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    _reactRouter.Link,
-                    { to: "/listing" },
-                    'Home Screen'
+                    'h2',
+                    { className: 'gutter' },
+                    'POPULAR BLOGS'
                 ),
                 this.getBlogsListItem()
             );

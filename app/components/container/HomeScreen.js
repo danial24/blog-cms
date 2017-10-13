@@ -45,23 +45,45 @@ export default class HomeScreen extends ContainerBase {
             return this.getHorizontalListView();
         }
     }
+
+
+
     getListingItem(item, index){
-        return (
-            <li key={index}>
-                <p>{item.title}</p>
-                <p>{item.content}</p>
-                <p>{item.author}</p>
-                <p>{item.created_at}</p>
+        // return (
+        //     <li key={index}>
+        //         <p>{item.title}</p>
+        //         <p>{item.content}</p>
+        //         <p>{item.author}</p>
+        //         <p>{item.created_at}</p>
+        //     </li>
+        // );
+
+        return(
+            <li className="small-card" key={index + 100} >
+              {/* {this.getImageComponent(item)} */}
+              <div className="card-content card-content-liner-3">
+                <ul className="unstyled list-data">
+                  <li className="lable-item">
+                      {item.title}
+                  </li>
+                  <li className="car-review">
+                  <p className="">{item.content}</p>
+                  </li>
+                  <li className="grey">{"Posted By: " + item.author}</li>
+                  <li className="grey">{item.created_at}</li>
+                </ul>
+              </div>
             </li>
-        );
+          );
     }
     getHorizontalListView(){
+        var list = this.state.blogsList;
         var layoutWidth = ((210 * this.state.blogsList.length) + 10) + 'px';
         return (
           <div className="scrollabe-content-panel popular-up-comming">
             <div className="scrollable-panel clearfix" style={{width:layoutWidth}}>
               <ul className="unstyled inline-block">
-                {this.state.blogsList.map(function(item,index){
+                {list.map(function(item,index){
                   return this.getListingItem(item,index);
                 }.bind(this))}
               </ul>
@@ -69,13 +91,12 @@ export default class HomeScreen extends ContainerBase {
           </div>
         );
       }
+
     render() {
         return (<div>
-
-            <Link to={"/listing"}>
-                Home Screen
-            </Link>
+            <h2 className="gutter">POPULAR BLOGS</h2>
             {this.getBlogsListItem()}
         </div>);
     }
+
 }

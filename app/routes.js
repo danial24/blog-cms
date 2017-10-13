@@ -21,7 +21,7 @@ var childRoutesArray = [
   }
 },
 {
-  path: 'reacts/1/listing',
+  path: 'reacts/1/detail',
   getComponent(location, cb) {
     System.import(/* webpackChunkName: "Listing" */ './components/container/Listing')
       .then(loadRoute(cb))
