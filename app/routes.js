@@ -13,7 +13,7 @@ function loadRoute(cb) {
 
 var childRoutesArray = [
 {
-    path: 'reacts/1',
+    path: '/cms-blog.com/index.html',
     getComponent(location, cb) {
       System.import(/* webpackChunkName: "HomeScreen" */ './components/container/HomeScreen')
         .then(loadRoute(cb))
@@ -21,7 +21,7 @@ var childRoutesArray = [
   }
 },
 {
-  path: 'reacts/1/detail',
+  path: '/detail',
   getComponent(location, cb) {
     System.import(/* webpackChunkName: "Listing" */ './components/container/Listing')
       .then(loadRoute(cb))
